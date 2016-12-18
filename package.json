@@ -1,5 +1,5 @@
 {
-  "name": "feathers-mongodb",
+  "name": "@joshua.toenyes/feathers-mongodb",
   "description": "Feathers MongoDB service",
   "version": "2.6.0",
   "homepage": "https://github.com/feathersjs/feathers-mongodb",
