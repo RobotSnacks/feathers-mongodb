@@ -1,19 +1,13 @@
-sudo: false
+sudo: true
 language: node_js
-services: mongodb
 node_js:
   - node
   - '6'
   - '4'
-addons:
-  code_climate:
-    repo_token: db77b58022717b6f1287d1af327a41a58064dfd0b80cf37ecb5e67a866607c83
 before_script:
-  - 'npm install -g codeclimate-test-reporter'
-after_script:
-  - 'codeclimate-test-reporter < coverage/lcov.info'
-notifications:
-  email: false
-  slack:
-    rooms:
-      secure: ltXCdo0rpead7PVIy2v5BjQDhSIZ3dPOX4sZKJwIg0H8SAeVaDjh2EgogV5/yQVhkX2V8UmFJKHVTFuEU7iUgZf5rsInxPBPNSIk13ICVcCZskBiB/XvEfyAOZg1JIMbMz4VFlN9t2iOAh8dCEXAH/MG3EAHuqueUCJLQ9Oyqw8=
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+  - echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+  - sudo apt-get update
+  - sudo apt-get install -y mongodb-org
+  - sudo service mongod start
+  - sudo cat /var/log/mongodb/mongod.log
